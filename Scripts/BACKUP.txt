@@ -1,0 +1,55 @@
+RMAN> connect target /
+RMAN> show retention policy;
+RMAN> CONFIGURE RETENTION POLICY TO REDUNDANCY 2;
+RMAN> crosscheck archivelog all;
+
+sqlplus / as sysdba
+SHUTDOWN IMMEDIATE;
+STARTUP MOUNT;
+ALTER DATABASE ARCHIVELOG;
+
+ALTER DATABASE NOARCHIVELOG;
+
+ALTER DATABASE OPEN;
+
+RMAN> run {backup as compressed backupset database spfile plus archivelog; delete noprompt obsolete; };
+
+D:\APP\ORACLEUSER\FAST_RECOVERY_AREA\ORCL1\
+
+RMAN> shutdown abort;
+
+D:\app\OracleUser\oradata\orcl1\
+
+startup mount;
+
+RMAN> exit;
+
+SQL PLUS
+
+startup mount;
+
+create spfile from pfile-'D:\app\OracleUser\admin\orcl1\pfile\init.ora.852022235434'
+
+startup mount;
+
+RMAN> connect target /
+restore controlfile from 'D:\app\OracleUser\fast_recovery_area\orcl1\BACKUPSET\2023_05_12\O1_MF_ANNNN_TAG20230512T083327_L5VMX7R2_.BKP'
+
+alter database mount;
+
+restore spfile to 'D:\app\OracleUser\fast_recovery_area\orcl1\BACKUPSET\2023_05_12\O1_MF_ANNNN_TAG20230512T083327_L5VMX7R2_.BKP'
+
+restore database from tag-'';
+
+recover database;
+
+recover database untill scn-1110855;
+
+alter database open resetlogs;
+
+exit;
+
+sqlplus / as sysdba
+
+select
+
