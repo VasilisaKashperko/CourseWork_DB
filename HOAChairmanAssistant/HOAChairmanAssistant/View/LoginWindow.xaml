@@ -1,0 +1,34 @@
+﻿<Window x:Class="HOAChairmanAssistant.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:local="clr-namespace:HOAChairmanAssistant.View"
+        mc:Ignorable="d"
+        Title="LoginWindow" AllowsTransparency="True" ResizeMode="NoResize"
+        Height="500" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        MouseDown="LoginWindow_MouseDown" Background="Transparent"
+        DataContext="{Binding LoginWindowViewModel, Source={StaticResource Locator}}" Icon="/HOAChairmanAssistant;component/Assets/LogoForAssistant.ico">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedPageCommand, Mode=OneWay}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Background="Transparent">
+        <materialDesign:TransitioningContent Grid.Row="1" x:Name="TransitioningContentSlide"
+        OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.5}">
+            <Border Background="#009688" CornerRadius="15">
+                <Grid Background="Transparent">
+                    <Grid Grid.Row="1" >
+                        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                    </Grid>
+                    <Button Click="CloseButton_Click" Padding="1"  VerticalAlignment="Top" HorizontalAlignment="Right" Width="25" Height="25"  Margin="0 3 5 0" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Kind="Close" Width="25" Height="25" Foreground="#ffffff" />
+                    </Button>
+                </Grid>
+            </Border>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</Window>

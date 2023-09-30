@@ -1,0 +1,122 @@
+﻿<Page x:Class="HOAChairmanAssistant.Pages.Information.InformationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:HOAChairmanAssistant.Pages.Information"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="924"
+      Title="InformationPage">
+
+    <Grid Background="AliceBlue">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel VerticalAlignment="Top">
+                <TextBlock Margin="20 12 0 10" Text="Задачи председателя ТСЖ" HorizontalAlignment="Center" FontSize="24" Foreground="#FF1F1F1F"/>
+
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   Председатель ТСЖ — это выборное должностное лицо из числа собственников жилых помещений дома, которое обеспечивает выполнение решений правления товарищества собственников жильцов." FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   Главная задача председателя - защита интересов собственников квартир в любых инстанциях. Его деятельность регламентируется на законодательном уровне Жилищным кодексом РБ, а также должностной инструкцией, утверждаемой членами правления ТСЖ. Работа председателя ТСЖ мало отличается от деятельности любого другого руководящего лица, но у нее есть отраслевая специфика." FontSize="18" Foreground="#FF1F1F1F"/>
+
+                <TextBlock Margin="20 10 0 10" Text="Функции председателя ТСЖ" HorizontalAlignment="Center" FontSize="24" Foreground="#FF1F1F1F"/>
+
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   Основными функциями председателя товарищества собственников жилья являются:" FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18"/>
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" обеспечение надлежащего выполнения необходимых хозяйственных и коммунальных работ по" FontSize="18" Foreground="#FF1F1F1F"/>
+                </StackPanel>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="дому;" FontSize="18" Foreground="#FF1F1F1F"/>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" обеспечение предоставления собственникам жилья качественных поставок энергоресурсов от ком-" FontSize="18" Foreground="#FF1F1F1F"/>
+                </StackPanel>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="паний-подрядчиков;" FontSize="18" Foreground="#FF1F1F1F"/>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" своевременное реагирование на пожелания и потребности собственников многоквартирного дома." FontSize="18" Foreground="#FF1F1F1F"/>
+                </StackPanel>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   Для грамотного выполнения своих функций председатель ТСЖ должен обладать базовыми знаниями в системе управления многоквартирным домом, поэтому зачастую его отправляют на специализированные курсы или выделяют средства для обучения. Ведь от квалификации руководителя зависит эффективность управления домом." FontSize="18" Foreground="#FF1F1F1F"/>
+
+                <TextBlock Margin="20 10 0 10" Text="Обязанности председателя ТСЖ" HorizontalAlignment="Center" FontSize="24" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   На основе функций выстраиваются должностные обязанности руководителя ТСЖ. Если функции раскрыва- ют задачи председателя в общем виде, то обязанности конкретизируют их." FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="   Между председателем и товариществом заключается трудовой договор (ст. 17 Трудового кодекса РБ), где подробно описываются закрепленные за ним обязанности:" FontSize="18" Foreground="#FF1F1F1F"/>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18" Foreground="#FF1F1F1F"/>
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" знать действующее законодательство РБ (нормативно-правовые акты, относящиеся к деятельности" FontSize="18" Foreground="#FF1F1F1F"/>
+                </StackPanel>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="сообщества, устав ТСЖ и должностную инструкцию);" FontSize="18" Foreground="#FF1F1F1F"/>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" контролировать своевременную оплату жильцами коммунальных услуг;" FontSize="18" Foreground="#FF1F1F1F"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock  TextWrapping="Wrap" Text=" проверять работу финансовых органов товарищества;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="#FF1F1F1F" Text=" контролировать выполнение Устава и других документов;" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="#FF1F1F1F" Text=" реализовывать решения, принятые на общем собрании;" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" контролировать поддержание порядка в жилом доме;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" управлять персоналом по хозяйственной работе;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" заключать договоры, касающиеся содержания общего порядка жилого дома на выгодных условиях;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" предотвращать конфликтные ситуации;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" работать с документацией;" Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+
+                <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                    <TextBlock TextWrapping="Wrap" Text="   " FontSize="18"/>
+                    <materialDesign:PackIcon Foreground="#FF607D8B" Kind="Check" Width="18" Height="18" VerticalAlignment="Center"/>
+                    <TextBlock TextWrapping="Wrap" Text=" предоставлять отчет о проделанной работе, тратах." Foreground="#FF1F1F1F" FontSize="18"/>
+                </StackPanel>
+                <TextBlock Margin="20 0 0 0" TextWrapping="Wrap" Text="" FontSize="18"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

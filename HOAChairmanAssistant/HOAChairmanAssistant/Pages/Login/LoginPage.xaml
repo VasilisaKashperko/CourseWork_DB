@@ -1,0 +1,104 @@
+﻿<Page x:Class="HOAChairmanAssistant.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:HOAChairmanAssistant.Pages"
+      xmlns:local1="clr-namespace:HOAChairmanAssistant"
+      xmlns:local2="clr-namespace:HOAChairmanAssistant.Helpers.AttachedProperties"
+      xmlns:local3="clr-namespace:HOAChairmanAssistant.Helpers.Converters"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="350"
+      Title="LoginPage">
+    <Page.Resources>
+        <local3:ParametrizedBooleanToVisibilityConverter x:Key="ParametrizedBooleanToVisibilityConverter"/>
+        <local3:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    </Page.Resources>
+    <materialDesign:DialogHost 
+        IsOpen="{Binding IsOpenDialog,FallbackValue=False}">
+        <materialDesign:DialogHost.DialogContent>
+            <Border Height="Auto" Width="Auto">
+                <StackPanel Margin="16">
+                    <TextBlock Text="{Binding Message}"/>
+                    <Button Margin="0 10 0 0" Style="{StaticResource MaterialDesignFlatAccentButton}"
+                                Content="Закрыть" Foreground="#607D8B" Width="90" Height="30" Command="{Binding CloseDialodCommand}"/>
+                </StackPanel>
+            </Border>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <materialDesign:TransitioningContent Grid.Row="1" x:Name="TransitioningContentSlide"
+        OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.5}">
+                <Grid>
+                    <Rectangle Height="500" VerticalAlignment="Top" RadiusY="15" RadiusX="15" Margin="0,0,0.4,0">
+                        <Rectangle.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#607D8B"/>
+                                <GradientStop Color="#FF009688" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Rectangle.Fill>
+                    </Rectangle >
+                    <StackPanel Orientation="Vertical">
+                        <Image Source="/Assets/LogoForAssistant.png" Width="100" Height="100" VerticalAlignment="Top" Margin="0 20 0 10"/>
+                        <TextBlock Text="Помощник председателя ТСЖ" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                    <Rectangle Height="244" Fill="White" VerticalAlignment="Bottom" Margin="40,0,40,80" RadiusY="15" RadiusX="15">
+                        <Rectangle.Effect>
+                            <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="15" RenderingBias="Quality" ShadowDepth="1"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
+                        <TextBlock Text="Вход" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="117,32,117,0" Foreground="#FF1F1F1F" FontSize="18"/>
+                        <StackPanel VerticalAlignment="Center" Margin="24,61,24,10" Height="169">
+                            <TextBox x:Name="loginTextBox" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,16,0,0" FontSize="14">
+                                <TextBox.Text>
+                                    <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <local1:NotEmptyValidationRule  />
+                                            <local1:MinimumCharacterRule MinimumCharacters="3" />
+                                            <local1:MaximumCharacterRule MaximumCharacters="20" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <PasswordBox x:Name="passwordBox" materialDesign:HintAssist.Hint="Пароль" Margin="0,28,0,0" FontSize="14">
+                                <PasswordBox.Style>
+                                    <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignFloatingHintPasswordBox}">
+                                        <Style.Setters>
+                                            <Setter Property="local2:PasswordBoxAssistant.BindPassword" Value="True"/>
+                                            <Setter Property="local2:PasswordBoxAssistant.BoundPassword">
+                                                <Setter.Value>
+                                                    <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                                                        <Binding.ValidationRules>
+                                                            <local1:NotEmptyValidationRule  />
+                                                            <local1:MinimumCharacterRule MinimumCharacters="6" />
+                                                            <local1:MaximumCharacterRule MaximumCharacters="24" />
+                                                        </Binding.ValidationRules>
+                                                    </Binding>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style.Setters>
+                                    </Style>
+                                </PasswordBox.Style>
+                            </PasswordBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <ProgressBar 
+                                Visibility="{Binding IsVisibleProgressBar,
+                                Converter={StaticResource ParametrizedBooleanToVisibilityConverter},
+                                FallbackValue=Collapsed}"
+                                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                Value="35" 
+                                Width="40"
+                                Height="40"
+                                Margin="20 0 20 0"
+                                IsIndeterminate="{Binding IsVisibleProgressBar}"/>
+                        <Button Command="{Binding LoginCommand}"  VerticalAlignment="Bottom" Margin="100,0,100.4,66" Width="150" IsEnabled="{Binding IsVisibleProgressBar,Converter={StaticResource InverseBooleanConverter}}" Content="Войти" Foreground="#DDFFFFFF" Background="#FF607D8B" BorderBrush="#FF607D8B"/>
+                        <Button Command="{Binding RegisterCommand}"  VerticalAlignment="Bottom" Margin="100,0,100.4,20" Width="150" IsEnabled="{Binding IsVisibleProgressBar,Converter={StaticResource InverseBooleanConverter}}" Background="#ffffff" BorderBrush="#ffffff" Content="Регистрация" Foreground="#FF607D8B"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:TransitioningContent>
+        </Grid>
+    </materialDesign:DialogHost>
+</Page>

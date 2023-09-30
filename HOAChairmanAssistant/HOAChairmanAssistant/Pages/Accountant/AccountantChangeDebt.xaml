@@ -1,0 +1,197 @@
+﻿<Page x:Class="HOAChairmanAssistant.Pages.Accountant.AccountantChangeDebt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HOAChairmanAssistant.Pages.Accountant"
+            xmlns:local1="clr-namespace:HOAChairmanAssistant.Helpers.Converters"
+      xmlns:local2="clr-namespace:HOAChairmanAssistant"
+      xmlns:local3="clr-namespace:HOAChairmanAssistant.Helpers.ValidationRules"
+      xmlns:local4="clr-namespace:HOAChairmanAssistant.Model" xmlns:viewmodel="clr-namespace:HOAChairmanAssistant.ViewModel"
+      d:DataContext="{d:DesignInstance Type=viewmodel:AccountantChangeDebtViewModel}"
+      mc:Ignorable="d" 
+      d:DesignHeight="540" d:DesignWidth="924"
+      Title="AccountantChangeDebt">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Page.Resources>
+        <local1:ParametrizedBooleanToVisibilityConverter x:Key="ParametrizedBooleanToVisibilityConverter"/>
+        <local1:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <local1:EnumConverter x:Key="EnumConverter"/>
+    </Page.Resources>
+    <materialDesign:DialogHost 
+        IsOpen="{Binding IsOpenDialog,FallbackValue=False}">
+        <materialDesign:DialogHost.DialogContent>
+            <Border Height="Auto" Width="Auto">
+                <StackPanel Margin="16">
+                    <TextBlock Text="{Binding Message}"/>
+                    <Button Margin="0 10 0 0" Style="{StaticResource MaterialDesignFlatAccentButton}"
+                                Content="Закрыть" Foreground="#607D8B" Width="90" Height="30" Command="{Binding CloseDialogCommand}"/>
+                </StackPanel>
+            </Border>
+        </materialDesign:DialogHost.DialogContent>
+        <materialDesign:TransitioningContent x:Name="TransitioningContentSlide" 
+                                                 OpeningEffect="{materialDesign:TransitionEffect FadeIn, Duration=0:0:0.8}">
+            <Grid Background="AliceBlue">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Command="{Binding AboutHouseCommand}" Background="{x:Null}" BorderBrush="{x:Null}" Margin="0,0,852,14" Height="Auto">
+                        <materialDesign:PackIcon  Kind="ArrowBack" Foreground="#607D8B" FontSize="30" Width="50" Height="35"/>
+                    </Button>
+                    <TextBlock Grid.Row="0" Text="Изменение информации о жильце" TextAlignment="Center" Margin="77,6,78,34" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="#607D8B" Height="40" FontWeight="Bold" Width="769"/>
+                    <TextBlock Grid.Row="0" Text="Квартира " TextAlignment="Center" Margin="750,40,78,13" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="#607D8B" Height="27" Width="96"/>
+                    <TextBlock Grid.Row="0" Text="{Binding SelectedFlat.FlatNumber}" TextAlignment="Left" Margin="846,40,29,14" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="#607D8B" Height="26" Width="49"/>
+                    <TextBlock Grid.Row="0" Text="{Binding AboutHouse.HouseName}" TextAlignment="Left" Margin="752,11,48,40" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="#607D8B" Height="29" Width="124"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Личные данные" TextAlignment="Center" Foreground="#FF1F1F1F" FontSize="20" HorizontalAlignment="Center" Margin="82,0,81.4,411" Width="299"/>
+                        <StackPanel Margin="0,29,0,-0.4">
+                            <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="52" Margin="20 0 20 16"
+                                    MaxHeight="160" MaxWidth="300" materialDesign:HintAssist.Hint="Фамилия*" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                <TextBox.Text>
+                                    <Binding Path="Surname" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <local2:NotEmptyValidationRule  />
+                                            <local2:MinimumCharacterRule MinimumCharacters="3" />
+                                            <local2:MaximumCharacterRule MaximumCharacters="31"/>
+                                            <local3:OnlyLettersRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="51" Margin="20 0 20 16"
+                                    MaxHeight="160" MaxWidth="300" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Имя*" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                <TextBox.Text>
+                                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <local2:NotEmptyValidationRule  />
+                                            <local2:MinimumCharacterRule MinimumCharacters="3" />
+                                            <local2:MaximumCharacterRule MaximumCharacters="31"/>
+                                            <local3:OnlyLettersRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox ToolTip="Поле, необязательное для заполнения" VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="50" Margin="20 0 20 16"
+                                    MaxHeight="160" MaxWidth="300" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Отчество" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                <TextBox.Text>
+                                    <Binding Path="Patronymic" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <local2:MinimumCharacterRule MinimumCharacters="3" />
+                                            <local2:MaximumCharacterRule MaximumCharacters="31"/>
+                                            <local3:OnlyLettersRule />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                            <TextBox ToolTip="Можете ввести дополнительную информацию" VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="189" Margin="20,0,20.4,16"
+                                    MaxHeight="250" MaxWidth="300" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Дополнительная информация" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                <TextBox.Text>
+                                    <Binding Path="AdditionalInfo" UpdateSourceTrigger="PropertyChanged">
+                                        <Binding.ValidationRules>
+                                            <local2:MinimumCharacterRule MinimumCharacters="2"/>
+                                            <local2:MaximumCharacterRule MaximumCharacters="251"/>
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+                        </StackPanel>
+                        <Grid Margin="19.6,0,20,0.4" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Информация" Foreground="#FF1F1F1F" FontSize="20" HorizontalAlignment="Center" Margin="161,0,137.2,412.2" Width="124"/>
+                            <StackPanel Margin="0,29,0,-0.4">
+                                <TextBox ToolTip="Возможны два формата ввода: +375000000000 и 80000000000" VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="50" Margin="20,5,20.4,12"
+                                    MaxHeight="160" MaxWidth="300" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Мобильный телефон*" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                    <TextBox.Text>
+                                        <Binding Path="MobilePhone" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <local2:MinimumCharacterRule MinimumCharacters="1" />
+                                                <local2:MaximumCharacterRule MaximumCharacters="14"/>
+                                                <local3:PhoneNumberValidationRule/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBox ToolTip="Возможный формат ввода: 000000" VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="52" Margin="20,0,20.4,12"
+                                    MaxHeight="160" MaxWidth="300" materialDesign:HintAssist.Hint="Домашний телефон" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                    <TextBox.Text>
+                                        <Binding Path="HomePhone" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <local2:MinimumCharacterRule MinimumCharacters="6" />
+                                                <local2:MaximumCharacterRule MaximumCharacters="7"/>
+                                                <local3:OnlyNumbersRule />
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <TextBox ToolTip="Возможны два формата ввода: +375000000000 и 80000000000" VerticalAlignment="Top" HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap" Height="50" Margin="20,0,20.4,16"
+                                    MaxHeight="160" MaxWidth="300" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Доп. мобильный телефон" materialDesign:HintAssist.Foreground="#696969" FontSize="18" Grid.ColumnSpan="2" >
+                                    <TextBox.Text>
+                                        <Binding Path="AdditionalPhone" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding.ValidationRules>
+                                                <local2:MinimumCharacterRule MinimumCharacters="1" />
+                                                <local2:MaximumCharacterRule MaximumCharacters="14"/>
+                                                <local3:PhoneNumberValidationRule/>
+                                            </Binding.ValidationRules>
+                                        </Binding>
+                                    </TextBox.Text>
+                                </TextBox>
+                                <ComboBox materialDesign:HintAssist.Hint="Статус*"
+                                  SelectedValue="{Binding OwnerStatus, Converter={StaticResource EnumConverter}}"
+                                  ItemsSource="{Binding Source={local1:EnumToItemsSource {x:Type local4:OwnerStatus}}}"
+                                  SelectedIndex="0"
+                                  Margin="71,10,72.4,10"
+                                  MaxHeight="60"
+                                  MaxWidth="400"
+                                  materialDesign:HintAssist.Foreground="#696969"
+                                  FontSize="18">
+                                </ComboBox>
+                                <ProgressBar 
+                                Visibility="{Binding IsVisibleProgressBar,
+                                    Converter={StaticResource ParametrizedBooleanToVisibilityConverter},
+                                    FallbackValue=Collapsed}"
+                                Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                Value="35" 
+                                Margin="20 20 20 10"
+                                IsIndeterminate="{Binding IsVisibleProgressBar}" />
+                                <StackPanel Orientation="Horizontal" Height="54" Margin="0,98,0,0">
+                                    <Button
+                        ToolTip="Чтобы удалить жильца, нажмите на кнопку дважды"
+                         x:Name="DeleteButton"
+                         Foreground="#ffffff"
+                         FontSize="18"
+                         Margin="60 0 81 0" Content="Удалить"
+                         Background="#FF9A4848" BorderBrush="#FF9A4848">
+                                        <Button.InputBindings>
+                                            <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DeleteOwnerCommand}"/>
+                                        </Button.InputBindings>
+                                    </Button>
+                                    <Button       
+                         Visibility="{Binding IsVisibleProgressBar, ConverterParameter=False, Converter={StaticResource ParametrizedBooleanToVisibilityConverter}}"
+                         Foreground="#ffffff"
+                         FontSize="18"
+                         Margin="0,0,0,0.0" Content="Сохранить" 
+                         Command="{Binding UpdateOwnerCommand}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </materialDesign:TransitioningContent>
+    </materialDesign:DialogHost>
+</Page>
